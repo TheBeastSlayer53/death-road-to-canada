@@ -125,6 +125,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `)
 })
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
+    info.player2.setLife(10)
     Sheldon = sprites.create(img`
         . . . . f f f f . . . . . 
         . . f f f f f f f f . . . 
@@ -591,7 +592,6 @@ let Sheldon: Sprite = null
 let Bob: Sprite = null
 music.spooky.play()
 info.setLife(10)
-info.player2.setLife(10)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999111111111119999999999999999999999999999999999999991111999999999999999999999999999999999999999999111111111111

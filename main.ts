@@ -124,27 +124,66 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         .........c1c............
         `)
 })
-controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
-    info.player2.setLife(10)
-    Sheldon = sprites.create(img`
-        . . . . f f f f . . . . . 
-        . . f f f f f f f f . . . 
-        . f f f f f f c f f f . . 
-        f f f f f f c c f f f c . 
-        f f f c f f f f f f f c . 
-        c c c f f f e e f f c c . 
-        f f f f f e e f f c c f . 
-        f f f b f e e f b f f f . 
-        . f 4 1 f 4 4 f 1 4 f . . 
-        . f e 4 4 4 4 4 4 e f . . 
-        . f f f e e e e f f f . . 
-        f e f b 7 7 7 7 b f e f . 
-        e 4 f 7 7 7 7 7 7 f 4 e . 
-        e e f 6 6 6 6 6 6 f e e . 
-        . . . f f f f f f . . . . 
-        . . . f f . . f f . . . . 
-        `, SpriteKind.Player)
-    controller.player2.moveSprite(Sheldon, 25, 25)
+controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
+    if (controller.player2.isPressed(ControllerButton.Down)) {
+        animation.runImageAnimation(
+        Sheldon,
+        [img`
+            . . . . f f f f . . . . . 
+            . . f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f f f c c f f f c . 
+            f f f c f f f f f f f c . 
+            c c c f f f e e f f c c . 
+            f f f f f e e f f c c f . 
+            f f f b f e e f b f f f . 
+            . f 4 1 f 4 4 f 1 4 f . . 
+            . f e 4 4 4 4 4 4 e f . . 
+            . f f f e e e e f f f . . 
+            f e f b 7 7 7 7 b f e f . 
+            e 4 f 7 7 7 7 7 7 f 4 e . 
+            e e f 6 6 6 6 6 6 f e e . 
+            . . . f f f f f f . . . . 
+            . . . f f . . f f . . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . . . f f f f . . . . 
+            . . . f f f f f f f f . . 
+            . . f f f f f f c f f f . 
+            f f f f f f f c c f f f c 
+            f f f f c f f f f f f f c 
+            . c c c f f f e e f f c c 
+            . f f f f f e e f f c c f 
+            . f f f b f e e f b f f f 
+            . f f 4 1 f 4 4 f 1 4 f f 
+            . . f e 4 4 4 4 4 e e f e 
+            . f e f b 7 7 7 e 4 4 4 e 
+            . e 4 f 7 7 7 7 e 4 4 e . 
+            . . . f 6 6 6 6 6 e e . . 
+            . . . f f f f f f f . . . 
+            . . . f f f . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . . f f f f . . . . . 
+            . . f f f f f f f f . . . 
+            . f f f c f f f f f f . . 
+            c f f f c c f f f f f f f 
+            c f f f f f f f c f f f f 
+            c c f f e e f f f c c c . 
+            f c c f f e e f f f f f . 
+            f f f b f e e f b f f f . 
+            f f 4 1 f 4 4 f 1 4 f f . 
+            e f e e 4 4 4 4 4 e f . . 
+            e 4 4 4 e 7 7 7 b f e f . 
+            . e 4 4 e 7 7 7 7 f 4 e . 
+            . . e e 6 6 6 6 6 f . . . 
+            . . . f f f f f f f . . . 
+            . . . . . . . f f f . . . 
+            `],
+        200,
+        true
+        )
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.left.isPressed()) {
@@ -361,84 +400,223 @@ info.onCountdownEnd(function () {
     true
     )
 })
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (controller.right.isPressed()) {
+controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
+    if (controller.player2.isPressed(ControllerButton.Up)) {
         animation.runImageAnimation(
-        Bob,
+        Sheldon,
         [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . f f f f f f . . . . . 
-            . . . f f e e e e f 2 f . . . . 
-            . . f f e e e e f 2 2 2 f . . . 
-            . . f e e e f f e e e e f . . . 
-            . . f f f f e e 2 2 2 2 e f . . 
-            . . f e 2 2 2 f f f f e 2 f . . 
-            . f f f f f f f e e e f f f . . 
-            . f f e 4 4 e b f 4 4 e e f . . 
-            . f e e 4 d 4 1 f d d e f . . . 
-            . . f e e e e e d d d f . . . . 
-            . . . . f 4 d d e 4 e f . . . . 
-            . . . . f e d d e 2 2 f . . . . 
-            . . . f f f e e f 5 5 f f . . . 
-            . . . f f f f f f f f f f . . . 
-            . . . . f f . . . f f f . . . . 
+            . . . . f f f f . . . . . 
+            . . f f c c c c f f . . . 
+            . f f c c c c c c f f . . 
+            f f c c c c c c c c f f . 
+            f f c c f c c c c c c f . 
+            f f f f f c c c f c c f . 
+            f f f f c c c f c c f f . 
+            f f f f f f f f f f f f . 
+            f f f f f f f f f f f f . 
+            . f f f f f f f f f f . . 
+            . f f f f f f f f f f . . 
+            f e f f f f f f f f e f . 
+            e 4 f 7 7 7 7 7 7 c 4 e . 
+            e e f 6 6 6 6 6 6 f e e . 
+            . . . f f f f f f . . . . 
+            . . . f f . . f f . . . . 
             `,img`
-            . . . . . f f f f f f . . . . . 
-            . . . f f e e e e f 2 f . . . . 
-            . . f f e e e e f 2 2 2 f . . . 
-            . . f e e e f f e e e e f . . . 
-            . . f f f f e e 2 2 2 2 e f . . 
-            . . f e 2 2 2 f f f f e 2 f . . 
-            . f f f f f f f e e e f f f . . 
-            . f f e 4 4 e b f 4 4 e e f . . 
-            . f e e 4 d 4 1 f d d e f f . . 
-            . . f e e e 4 d d d d f d d f . 
-            . . . f f e e 4 e e e f b b f . 
-            . . . . f 2 2 2 4 d d e b b f . 
-            . . . . e 2 2 2 e d d e b f . . 
-            . . . . f 4 4 4 f e e f f . . . 
-            . . . . . f f f f f f . . . . . 
-            . . . . . . f f f . . . . . . . 
+            . . . . . . . . . . . . . 
+            . . . . . f f f f . . . . 
+            . . . f f c c c c f f . . 
+            . f f f c c c c c c f f . 
+            f f c c c c c c c c c f f 
+            f c c c c f c c c c c c f 
+            . f f f f c c c c f c c f 
+            . f f f f c c f c c c f f 
+            . f f f f f f f f f f f f 
+            . f f f f f f f f f f f f 
+            . . f f f f f f f f f f . 
+            . . e f f f f f f f f f . 
+            . . e f f f f f f f f e f 
+            . . 4 c 7 7 7 7 7 e 4 4 e 
+            . . e f f f f f f f e e . 
+            . . . f f f . . . . . . . 
             `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . f f f f f f . . . . . 
-            . . . f f e e e e f 2 f . . . . 
-            . . f f e e e e f 2 2 2 f . . . 
-            . . f e e e f f e e e e f . . . 
-            . . f f f f e e 2 2 2 2 e f . . 
-            . . f e 2 2 2 f f f f e 2 f . . 
-            . f f f f f f f e e e f f f . . 
-            . f f e 4 4 e b f 4 4 e e f . . 
-            . f e e 4 d 4 1 f d d e f . . . 
-            . . f e e e e e d d d f . . . . 
-            . . . . f 4 d d e 4 e f . . . . 
-            . . . . f e d d e 2 2 f . . . . 
-            . . . f f f e e f 5 5 f f . . . 
-            . . . f f f f f f f f f f . . . 
-            . . . . f f . . . f f f . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . f f f f f f . . . . . 
-            . . . f f e e e e f 2 f . . . . 
-            . . f f e e e e f 2 2 2 f . . . 
-            . . f e e e f f e e e e f . . . 
-            . . f f f f e e 2 2 2 2 e f . . 
-            . . f e 2 2 2 f f f f e 2 f . . 
-            . f f f f f f f e e e f f f . . 
-            . f f e 4 4 e b f 4 4 e e f . . 
-            . f e e 4 d 4 1 f d d e f f . . 
-            . . f e e e 4 d d d d f d d f . 
-            . . . . f e e 4 e e e f b b f . 
-            . . . . f 2 2 2 4 d d e b b f . 
-            . . . f f 4 4 4 e d d e b f . . 
-            . . . f f f f f f e e f f . . . 
-            . . . . f f . . . f f f . . . . 
+            . . . . . . . . . . . . . 
+            . . . . . f f f f . . . . 
+            . . . f f c c c c f f . . 
+            . . f f c c c c c c f f . 
+            . f f f c c c c c c c f f 
+            f f f c c c c c c c c c f 
+            f f c c c f c c c c c c f 
+            . f f f f f c c c f c f f 
+            . f f f f c c f f c f f f 
+            . . f f f f f f f f f f f 
+            . . f f f f f f f f f f . 
+            . . f f f f f f f f f e . 
+            . f e f f f f f f f f e . 
+            . e 4 4 e 7 7 7 7 7 c 4 . 
+            . . e e f f f f f f f e . 
+            . . . . . . . . f f f . . 
             `],
         200,
         true
         )
     }
 })
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (controller.right.isPressed()) {
+        animation.runImageAnimation(
+        Bob,
+        [img`
+            . . . . . . f f f f f f . . . . 
+            . . . . f f e e e e f 2 f . . . 
+            . . . f f e e e e f 2 2 2 f . . 
+            . . . f e e e f f e e e e f . . 
+            . . . f f f f e e 2 2 2 2 e f . 
+            . . . f e 2 2 2 f f f f e 2 f . 
+            . . f f f f f f f e e e f f f . 
+            . . f f e 4 4 e b f 4 4 e e f . 
+            . . f e e 4 d 4 1 f d d e f . . 
+            . . . f e e e 4 d d d d f . . . 
+            . . . . f f e e 4 4 4 e f . . . 
+            . . . . . 4 d d e 2 2 2 f . . . 
+            . . . . . e d d e 2 2 2 f . . . 
+            . . . . . f e e f 4 5 5 f . . . 
+            . . . . . . f f f f f f . . . . 
+            . . . . . . . f f f . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f f f f f . . . . 
+            . . . . f f e e e e f 2 f . . . 
+            . . . f f e e e e f 2 2 2 f . . 
+            . . . f e e e f f e e e e f . . 
+            . . . f f f f e e 2 2 2 2 e f . 
+            . . . f e 2 2 2 f f f f e 2 f . 
+            . . f f f f f f f e e e f f f . 
+            . . f f e 4 4 e b f 4 4 e e f . 
+            . . f e e 4 d 4 1 f d d e f . . 
+            . . . f e e e e e d d d f . . . 
+            . . . . . f 4 d d e 4 e f . . . 
+            . . . . . f e d d e 2 2 f . . . 
+            . . . . f f f e e f 5 5 f f . . 
+            . . . . f f f f f f f f f f . . 
+            . . . . . f f . . . f f f . . . 
+            `,img`
+            . . . . . . f f f f f f . . . . 
+            . . . . f f e e e e f 2 f . . . 
+            . . . f f e e e e f 2 2 2 f . . 
+            . . . f e e e f f e e e e f . . 
+            . . . f f f f e e 2 2 2 2 e f . 
+            . . . f e 2 2 2 f f f f e 2 f . 
+            . . f f f f f f f e e e f f f . 
+            . . f f e 4 4 e b f 4 4 e e f . 
+            . . f e e 4 d 4 1 f d d e f . . 
+            . . . f e e e 4 d d d d f . . . 
+            . . . . f f e e 4 4 4 e f . . . 
+            . . . . . 4 d d e 2 2 2 f . . . 
+            . . . . . e d d e 2 2 2 f . . . 
+            . . . . . f e e f 4 5 5 f . . . 
+            . . . . . . f f f f f f . . . . 
+            . . . . . . . f f f . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . f f f f f f . . . . 
+            . . . . f f e e e e f 2 f . . . 
+            . . . f f e e e e f 2 2 2 f . . 
+            . . . f e e e f f e e e e f . . 
+            . . . f f f f e e 2 2 2 2 e f . 
+            . . . f e 2 2 2 f f f f e 2 f . 
+            . . f f f f f f f e e e f f f . 
+            . . f f e 4 4 e b f 4 4 e e f . 
+            . . f e e 4 d 4 1 f d d e f . . 
+            . . . f e e e 4 d d d d f . . . 
+            . . . . 4 d d e 4 4 4 e f . . . 
+            . . . . e d d e 2 2 2 2 f . . . 
+            . . . . f e e f 4 4 5 5 f f . . 
+            . . . . f f f f f f f f f f . . 
+            . . . . . f f . . . f f f . . . 
+            `],
+        200,
+        true
+        )
+    }
+})
+controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
+    if (controller.player2.isPressed(ControllerButton.Right)) {
+        animation.runImageAnimation(
+        Sheldon,
+        [img`
+            . . . . . . . . . . . . . 
+            . . . f f f f f f . . . . 
+            . f f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f c f f f c f f f . 
+            f c f f c c f f f c c f f 
+            f c c f f f f e f f f f f 
+            f f f f f f f e e f f f . 
+            f f e e f b f e e f f f . 
+            f f e 4 e 1 f 4 4 f f . . 
+            . f f f e 4 4 4 4 f . . . 
+            . 4 4 4 e e e e f f . . . 
+            . e 4 4 e 7 7 7 7 f . . . 
+            . f e e f 6 6 6 6 f f . . 
+            . f f f f f f f f f f . . 
+            . . f f . . . f f f . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . f f f f f f . . . . 
+            . f f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f c f f f c f f f . 
+            f c f f c c f f f c c f f 
+            f c c f f f f e f f f f f 
+            f f f f f f f e e f f f . 
+            f f e e f b f e e f f . . 
+            . f e 4 e 1 f 4 4 f f . . 
+            . f f f e e 4 4 4 f . . . 
+            . . f e 4 4 e e f f . . . 
+            . . f e 4 4 e 7 7 f . . . 
+            . f f f e e f 6 6 f f . . 
+            . f f f f f f f f f f . . 
+            . . f f . . . f f f . . . 
+            `,img`
+            . . . f f f f f . . . . . 
+            . f f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f c f f f c f f . . 
+            f c f f c c f f f c c f f 
+            f c c f f f f e f f f f f 
+            f f f f f f f e e f f f . 
+            f f e e f b f e e f f . . 
+            . f e 4 e 1 f 4 4 f . . . 
+            . f f f e 4 4 4 4 f . . . 
+            . . f e e e e e f f . . . 
+            . . e 4 4 e 7 7 7 f . . . 
+            . . e 4 4 e 7 7 7 f . . . 
+            . . f e e f 6 6 6 f . . . 
+            . . . f f f f f f . . . . 
+            . . . . f f f . . . . . . 
+            `],
+        200,
+        true
+        )
+    }
+})
+function Skulltarget () {
+    if (SkullTarget == 1 && !(SkullTarget <= 2)) {
+        while (SkullTarget == 1) {
+            Skull.follow(Bob, 15)
+            pause(5000)
+            Skull.follow(Sheldon, 15)
+            pause(5000)
+        }
+    } else if (SkullTarget == 2) {
+        while (SkullTarget == 2) {
+            Skull2.follow(Bob, 15)
+            pause(5000)
+            Skull2.follow(Sheldon, 15)
+            pause(5000)
+        }
+    }
+}
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     if (otherSprite == Bob) {
         if (info.life() == 0) {
@@ -543,52 +721,96 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
-controller.player4.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
-    Christine = sprites.create(img`
-        . . . . . f f 4 4 f f . . . . . 
-        . . . . f 5 4 5 5 4 5 f . . . . 
-        . . . f e 4 5 5 5 5 4 e f . . . 
-        . . f b 3 e 4 4 4 4 e 3 b f . . 
-        . . f 3 3 3 3 3 3 3 3 3 3 f . . 
-        . f 3 3 e b 3 e e 3 b e 3 3 f . 
-        . f 3 3 f f e e e e f f 3 3 f . 
-        . f b b f b f e e f b f b b f . 
-        . f b b e 1 f 4 4 f 1 e b b f . 
-        f f b b f 4 4 4 4 4 4 f b b f f 
-        f b b f f f e e e e f f f b b f 
-        . f e e f b d d d d b f e e f . 
-        . . e 4 c d d d d d d c 4 e . . 
-        . . e f b d b d b d b b f e . . 
-        . . . f f 1 d 1 d 1 d f f . . . 
-        . . . . . f f b b f f . . . . . 
-        `, SpriteKind.Player)
-    controller.player4.moveSprite(Christine, 25, 25)
+controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
+    if (controller.player2.isPressed(ControllerButton.Left)) {
+        animation.runImageAnimation(
+        Sheldon,
+        [img`
+            . . . . . f f f f f . . . 
+            . . . f f f f f f f f f . 
+            . . f f f c f f f f f f . 
+            . . f f c f f f c f f f f 
+            f f c c f f f c c f f c f 
+            f f f f f e f f f f c c f 
+            . f f f e e f f f f f f f 
+            . . f f e e f b f e e f f 
+            . . . f 4 4 f 1 e 4 e f . 
+            . . . f 4 4 4 4 e f f f . 
+            . . . f f e e e e e f . . 
+            . . . f 7 7 7 e 4 4 e . . 
+            . . . f 7 7 7 e 4 4 e . . 
+            . . . f 6 6 6 f e e f . . 
+            . . . . f f f f f f . . . 
+            . . . . . . f f f . . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . . f f f f f f . . . 
+            . . . f f f f f f f f f . 
+            . . f f f c f f f f f f . 
+            . f f f c f f f c f f f f 
+            f f c c f f f c c f f c f 
+            f f f f f e f f f f c c f 
+            . f f f e e f f f f f f f 
+            . . f f e e f b f e e f f 
+            . . f f 4 4 f 1 e 4 e f . 
+            . . . f 4 4 4 e e f f f . 
+            . . . f f e e 4 4 e f . . 
+            . . . f 7 7 e 4 4 e f . . 
+            . . f f 6 6 f e e f f f . 
+            . . f f f f f f f f f f . 
+            . . . f f f . . . f f . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . . f f f f f f . . . 
+            . . . f f f f f f f f f . 
+            . . f f f c f f f f f f . 
+            . f f f c f f f c f f f f 
+            f f c c f f f c c f f c f 
+            f f f f f e f f f f c c f 
+            . f f f e e f f f f f f f 
+            . f f f e e f b f e e f f 
+            . . f f 4 4 f 1 e 4 e f f 
+            . . . f 4 4 4 4 e f f f . 
+            . . . f f e e e e 4 4 4 . 
+            . . . f 7 7 7 7 e 4 4 e . 
+            . . f f 6 6 6 6 f e e f . 
+            . . f f f f f f f f f f . 
+            . . . f f f . . . f f . . 
+            `],
+        200,
+        true
+        )
+    }
 })
-controller.player3.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
-    Sherry = sprites.create(img`
-        . f f f . f f f f . f f f . 
-        f f f f f c c c c f f f f f 
-        f f f f b c c c c b f f f f 
-        f f f c 3 c c c c 3 c f f f 
-        . f 3 3 c c c c c c 3 3 f . 
-        . f c c c c 4 4 c c c c f . 
-        . f f c c 4 4 4 4 c c f f . 
-        . f f f b f 4 4 f b f f f . 
-        . f f 4 1 f d d f 1 4 f f . 
-        . . f f d d d d d d f f . . 
-        . . e f e 4 4 4 4 e f e . . 
-        . e 4 f b 3 3 3 3 b f 4 e . 
-        . 4 d f 3 3 3 3 3 3 c d 4 . 
-        . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-        . . . . f f f f f f . . . . 
-        . . . . f f . . f f . . . . 
+controller.player2.onEvent(ControllerEvent.Connected, function () {
+    info.player2.setLife(10)
+    Sheldon = sprites.create(img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f 4 1 f 4 4 f 1 4 f . . 
+        . f e 4 4 4 4 4 4 e f . . 
+        . f f f e e e e f f f . . 
+        f e f b 7 7 7 7 b f e f . 
+        e 4 f 7 7 7 7 7 7 f 4 e . 
+        e e f 6 6 6 6 6 6 f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
         `, SpriteKind.Player)
-    controller.player3.moveSprite(Sherry, 25, 25)
+    controller.player2.moveSprite(Sheldon, 25, 25)
+    Sheldon.setBounceOnWall(true)
+    SkullTarget = 1
+    Skulltarget()
 })
-let Sherry: Sprite = null
-let Christine: Sprite = null
+let SkullTarget = 0
 let Skull2: Sprite = null
 let Sheldon: Sprite = null
+let Skull: Sprite = null
 let Bob: Sprite = null
 music.spooky.play()
 info.setLife(10)
@@ -734,7 +956,7 @@ Bob = sprites.create(img`
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
 controller.moveSprite(Bob, 25, 25)
-let Skull = sprites.create(img`
+Skull = sprites.create(img`
     ........................
     ........................
     ........................
@@ -866,11 +1088,11 @@ Skull,
 100,
 true
 )
+Skull.follow(Bob, 15)
 Skull.setPosition(135, 15)
 Bob.setPosition(20, 20)
 Bob.setBounceOnWall(true)
 forever(function () {
-    Skull.follow(Bob, 15)
     if (Skull.overlapsWith(Bob)) {
         Skull.x += 50
     }
